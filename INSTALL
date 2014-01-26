@@ -1,9 +1,9 @@
-Building FooCoin
+Building CoinDiggerCoin
 
-See doc/readme-qt.rst for instructions on building foocoin-qt,
+See doc/readme-qt.rst for instructions on building coindiggercoin-qt,
 the intended-for-end-users, nice-graphical-interface, reference
-implementation of FooCoin.
+implementation of CoinDiggerCoin.
 
-See doc/build-*.txt for instructions on building foocoin,
+See doc/build-*.txt for instructions on building coindiggercoin,
 the intended-for-services, no-graphical-interface, reference
-implementation of FooCoin.
+implementation of CoinDiggerCoin.

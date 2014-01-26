@@ -1,3 +1,6 @@
-FooCoin (FOO)
+CoinDiggerCoin (CDC)
 
-Blah, blah, blah.
+Readme goes here
+
+RPC 9666
+P2P 9667
