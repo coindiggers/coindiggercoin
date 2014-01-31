@@ -826,8 +826,9 @@ uint256 static GetOrphanRoot(const CBlock* pblock)
     return pblock->GetHash();
 }
 
-int64 static GetBlockValue(int nHeight, int64 nFees)
+int64 static GetBlockValue(int nHeight, int64 nFees, uint256 prevHash)
 {
+	printf("Previous HASH : %d",prevHash.ToString());
     int64 nSubsidy = 50 * COIN;
 	nSubsidy >>= (nHeight / 840000);
     return nSubsidy + nFees;
