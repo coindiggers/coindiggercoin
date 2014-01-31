@@ -826,12 +826,12 @@ uint256 static GetOrphanRoot(const CBlock* pblock)
     return pblock->GetHash();
 }
 
-int64 static GetBlockValue(int nHeight, int64 nFees, uint256 prevHash)
+int64 static GetBlockValue(int nHeight, int64 nFees)
 {
-	std::string cseed_str = prevHash.ToString();
-	const char* cseed = cseed_str.c_str();
-	long seed = hex2long(cseed);
-	printf("Previous HASH : %d",seed);
+	//std::string cseed_str = prevHash.ToString();
+	//const char* cseed = cseed_str.c_str();
+	//long seed = hex2long(cseed);
+	//printf("Previous HASH : %d",seed);
     int64 nSubsidy = 50 * COIN;
 	nSubsidy >>= (nHeight / 840000);
     return nSubsidy + nFees;
