@@ -1368,7 +1368,9 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex)
     unsigned int nTxPos = pindex->nBlockPos + ::GetSerializeSize(CBlock(), SER_DISK, CLIENT_VERSION) - 1 + GetSizeOfCompactSize(vtx.size());
 
     map<uint256, CTxIndex> mapQueuedChanges;
-    
+    int64 nFees = 0;
+    int64 nValueIn = 0;
+    int64 nValueOut = 0;
     unsigned int nSigOps = 0;
     BOOST_FOREACH(CTransaction& tx, vtx)
     {
@@ -1393,6 +1395,7 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex)
         MapPrevTx mapInputs;
         if (!tx.IsCoinBase())
         {
+        	nValueOut += tx.GetValueOut();
             bool fInvalid;
             if (!tx.FetchInputs(txdb, mapQueuedChanges, true, false, mapInputs, fInvalid))
                 return false;
@@ -1415,6 +1418,16 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex)
 
         mapQueuedChanges[hashTx] = CTxIndex(posThisTx, tx.vout.size());
     }
+    // GoldDiggerCoin: Check gold mined regardless of blocks mined.
+    pindex->nGold = nValueOut - nValueIn + nFees;
+    pindex->nGoldSupply = (pindex->pprev? pindex->pprev->nGoldSupply : 0) + nValueOut - nValueIn;
+    if (fDebug)	
+    {
+                    printf("nGold:", nGold);
+                    printf("nGoldSupply:", nGoldSupply);
+	}
+    if (!txdb.WriteBlockIndex(CDiskBlockIndex(pindex)))
+        return error("Connect() : WriteBlockIndex for pindex failed");
 
     // Write queued txindex changes
     for (map<uint256, CTxIndex>::iterator mi = mapQueuedChanges.begin(); mi != mapQueuedChanges.end(); ++mi)
