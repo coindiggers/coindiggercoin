@@ -832,6 +832,8 @@ int64 static GetBlockValue(int nHeight, int64 nFees)
 	//const char* cseed = cseed_str.c_str();
 	//long seed = hex2long(cseed);
 	//printf("Previous HASH : %d",seed);
+	printf("Value 1 : vtx[0].GetValueOut()",vtx[0].GetValueOut());
+	printf("Value 2 : GetBlockValue(pindex->nHeight, nFees)",GetBlockValue(pindex->nHeight, nFees));
     int64 nSubsidy = 50 * COIN;
 	nSubsidy >>= (nHeight / 840000);
     return nSubsidy + nFees;
