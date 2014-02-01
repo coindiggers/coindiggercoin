@@ -1419,7 +1419,7 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex)
     pindex->nGold = nValueOut - nValueIn + nFees;
     int64 iGold = nValueOut - nValueIn + nFees;
     int64 GoldOut = nValueOut;
-    int64 GoldIn = nValueI;
+    int64 GoldIn = nValue;
     pindex->nGoldSupply = (pindex->pprev? pindex->pprev->nGoldSupply : 0) + nValueOut - nValueIn;
     int64 iGoldSupply = (pindex->pprev? pindex->pprev->nGoldSupply : 0) + nValueOut - nValueIn;
     if (fDebug)	
