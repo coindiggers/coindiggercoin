@@ -1424,8 +1424,8 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex)
     {
                     printf("Int Gold: %i \n", iGold);
                     printf("Int GoldSupply: %i \n", iGoldSupply);
-                    printf("Str Gold: %s \n", iGold.ToString());
-                    printf("Str GoldSupply: %s \n", iGoldSupply.ToString());
+                    printf("Str Gold: %s \n", iGold);
+                    printf("Str GoldSupply: %s \n", iGoldSupply);
 	}
     if (!txdb.WriteBlockIndex(CDiskBlockIndex(pindex)))
         return error("Connect() : WriteBlockIndex for pindex failed");
