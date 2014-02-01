@@ -1422,12 +1422,8 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex)
     pindex->nGoldSupply = (pindex->pprev? pindex->pprev->nGoldSupply : 0) + nValueOut - nValueIn;
     if (fDebug)	
     {
-    				std::string nGoldString;
-    				std::string nGoldSupplyString;
-    				nGoldString = nGold.ToString();
-    				nGoldSupplyString = nGoldSupply.ToString();
-                    printf("nGold:", nGoldString);
-                    printf("nGoldSupply:", nGoldSupplyString);
+                    printf("nGold:", pindex->nGold);
+                    printf("nGoldSupply:", pindex->nGoldSupply);
 	}
     if (!txdb.WriteBlockIndex(CDiskBlockIndex(pindex)))
         return error("Connect() : WriteBlockIndex for pindex failed");
