@@ -1086,6 +1086,8 @@ public:
         nBlockPos = 0;
         nHeight = 0;
         bnChainWork = 0;
+        nGold = 0;
+        nGoldSupply = 0;
 
         nVersion       = 0;
         hashMerkleRoot = 0;
@@ -1103,6 +1105,8 @@ public:
         nBlockPos = nBlockPosIn;
         nHeight = 0;
         bnChainWork = 0;
+        nGold = 0;
+        nGoldSupply = 0;
 
         nVersion       = block.nVersion;
         hashMerkleRoot = block.hashMerkleRoot;
@@ -1185,7 +1189,7 @@ public:
 
     std::string ToString() const
     {
-        return strprintf("CBlockIndex(nprev=%08x, pnext=%08x, nFile=%d, nBlockPos=%-6d nHeight=%d, merkle=%s, hashBlock=%s)",
+        return strprintf("CBlockIndex(nprev=%08x, pnext=%08x, nFile=%d, nBlockPos=%-6d nHeight=%d, nGold=%s, nGoldSupply=%s, merkle=%s, hashBlock=%s)",
             pprev, pnext, nFile, nBlockPos, nHeight,
             hashMerkleRoot.ToString().substr(0,10).c_str(),
             GetBlockHash().ToString().substr(0,20).c_str());
@@ -1227,6 +1231,8 @@ public:
         READWRITE(nFile);
         READWRITE(nBlockPos);
         READWRITE(nHeight);
+        READWRITE(nGold);
+        READWRITE(nGoldSupply);
 
         // block header
         READWRITE(this->nVersion);
