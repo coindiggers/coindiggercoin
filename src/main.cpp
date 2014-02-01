@@ -1426,18 +1426,24 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex)
     if (fDebug)	
     {
     				printf("Start Gold Debug\n");
-    				char buffer[20];
-    				sprintf(buffer, "%Ld \n", iGold); //Gold
+    				printf("Gold : ");
     				printf("%Ld", iGold); //Gold
+    				printf("\n");
+    				//printf("%Ld", iGold); //Gold
                     //printf("Int Gold: %i \n", iGold);
                     //printf("Int GoldSupply: %i \n", iGoldSupply);
-                    sprintf(buffer, "%Ld \n", iGoldSupply); //GoldSupply
-                    printf(buffer, "%Ld \n", iGoldSupply); //GoldSupply
+                    printf("GoldSupply : ");
+                    printf("%Ld", iGoldSupply); //GoldSupply
+                    printf("\n");
                     //printf("Str Gold: %s \n", iGold);
                     //printf("Str GoldSupply: %s \n", iGoldSupply);
-                    printf("%Ld \n", GoldOut); //GoldOut
+                    printf("GoldOut : ");
+                    printf("%Ld", GoldOut); //GoldOut
+                    printf("\n");
                     //printf("Int GoldOut: %i \n", GoldOut);
-                    sprintf(buffer, "%Ld \n", GoldIn); //GoldIn
+                    printf("GoldIn : ");
+                    printf("%Ld", GoldIn); //GoldIn
+                    printf("\n");
                     //printf("Int GoldIn: %i \n", GoldIn);
                     printf("End Gold Debug\n");
 	}
