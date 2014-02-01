@@ -1341,6 +1341,7 @@ bool CBlock::DisconnectBlock(CTxDB& txdb, CBlockIndex* pindex)
 
 bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex)
 {
+	int64 nFees = 0;
 	printf("Value 1 : vtx[0].GetValueOut()",vtx[0].GetValueOut());
 	printf("Value 2 : GetBlockValue(pindex->nHeight, nFees)",GetBlockValue(pindex->nHeight, nFees));
     // Check it again in case a previous version let a bad block in
@@ -1367,7 +1368,7 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex)
     unsigned int nTxPos = pindex->nBlockPos + ::GetSerializeSize(CBlock(), SER_DISK, CLIENT_VERSION) - 1 + GetSizeOfCompactSize(vtx.size());
 
     map<uint256, CTxIndex> mapQueuedChanges;
-    int64 nFees = 0;
+    
     unsigned int nSigOps = 0;
     BOOST_FOREACH(CTransaction& tx, vtx)
     {
