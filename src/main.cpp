@@ -1342,8 +1342,6 @@ bool CBlock::DisconnectBlock(CTxDB& txdb, CBlockIndex* pindex)
 bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex)
 {
 	int64 nFees = 0;
-	printf("Value 1 : vtx[0].GetValueOut()",vtx[0].GetValueOut());
-	printf("Value 2 : GetBlockValue(pindex->nHeight, nFees)",GetBlockValue(pindex->nHeight, nFees));
     // Check it again in case a previous version let a bad block in
     if (!CheckBlock())
         return false;
@@ -1419,11 +1417,15 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex)
     }
     // GoldDiggerCoin: Check gold mined regardless of blocks mined.
     pindex->nGold = nValueOut - nValueIn + nFees;
+    int64 iGold = nValueOut - nValueIn + nFees;
     pindex->nGoldSupply = (pindex->pprev? pindex->pprev->nGoldSupply : 0) + nValueOut - nValueIn;
+    int64 iGoldSupply = (pindex->pprev? pindex->pprev->nGoldSupply : 0) + nValueOut - nValueIn;
     if (fDebug)	
     {
-                    printf("nGold:", pindex->nGold);
-                    printf("nGoldSupply:", pindex->nGoldSupply);
+                    printf("Int Gold: %i \n", iGold);
+                    printf("Int GoldSupply: %i \n", iGoldSupply);
+                    printf("Str Gold: %s \n", iGold.ToString());
+                    printf("Str GoldSupply: %s \n", iGoldSupply.ToString());
 	}
     if (!txdb.WriteBlockIndex(CDiskBlockIndex(pindex)))
         return error("Connect() : WriteBlockIndex for pindex failed");
