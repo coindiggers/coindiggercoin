@@ -1425,17 +1425,21 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex)
     int64 iGoldSupply = (pindex->pprev? pindex->pprev->nGoldSupply : 0) + nValueOut - nValueIn;
     if (fDebug)	
     {
+    				printf("Start Gold Debug\n");
     				char buffer[20];
     				sprintf(buffer, "%Ld \n", iGold); //Gold
+    				printf("%Ld", iGold); //Gold
                     //printf("Int Gold: %i \n", iGold);
                     //printf("Int GoldSupply: %i \n", iGoldSupply);
                     sprintf(buffer, "%Ld \n", iGoldSupply); //GoldSupply
+                    printf(buffer, "%Ld \n", iGoldSupply); //GoldSupply
                     //printf("Str Gold: %s \n", iGold);
                     //printf("Str GoldSupply: %s \n", iGoldSupply);
-                    sprintf(buffer, "%Ld \n", GoldOut); //GoldOut
+                    printf("%Ld \n", GoldOut); //GoldOut
                     //printf("Int GoldOut: %i \n", GoldOut);
                     sprintf(buffer, "%Ld \n", GoldIn); //GoldIn
                     //printf("Int GoldIn: %i \n", GoldIn);
+                    printf("End Gold Debug\n");
 	}
     if (!txdb.WriteBlockIndex(CDiskBlockIndex(pindex)))
         return error("Connect() : WriteBlockIndex for pindex failed");
