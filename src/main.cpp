@@ -9,6 +9,7 @@
 #include "net.h"
 #include "init.h"
 #include "ui_interface.h"
+#include <inttypes.h>
 #include <boost/algorithm/string/replace.hpp>
 #include <boost/filesystem.hpp>
 #include <boost/filesystem/fstream.hpp>
@@ -1424,15 +1425,15 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex)
     int64 iGoldSupply = (pindex->pprev? pindex->pprev->nGoldSupply : 0) + nValueOut - nValueIn;
     if (fDebug)	
     {
-    				printf("Int64 Gold : %" PRId64 "\n", iGold);
+    				printf("%" PRId64 "\n", iGold); //Gold
                     //printf("Int Gold: %i \n", iGold);
                     //printf("Int GoldSupply: %i \n", iGoldSupply);
-                    printf("Int64 GoldSupply : %" PRId64 "\n", iGoldSupply);
+                    printf("%" PRId64 "\n", iGoldSupply); //GoldSupply
                     //printf("Str Gold: %s \n", iGold);
                     //printf("Str GoldSupply: %s \n", iGoldSupply);
-                    printf("Int64 GoldOut : %" PRId64 "\n", GoldOut);
+                    printf("%" PRId64 "\n", GoldOut); //GoldOut
                     //printf("Int GoldOut: %i \n", GoldOut);
-                    printf("Int64 GoldIn : %" PRId64 "\n", GoldIn);
+                    printf("	%" PRId64 "\n", GoldIn); //GoldIn
                     //printf("Int GoldIn: %i \n", GoldIn);
 	}
     if (!txdb.WriteBlockIndex(CDiskBlockIndex(pindex)))
