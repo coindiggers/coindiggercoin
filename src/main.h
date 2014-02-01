@@ -1065,6 +1065,8 @@ public:
     unsigned int nFile;
     unsigned int nBlockPos;
     int nHeight;
+    int64 nGold;
+    int64 nGoldSupply;
     CBigNum bnChainWork;
 
     // block header
