@@ -1428,16 +1428,20 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex)
     if (fDebug)	
     {
     				std::string g;
+    				std::string gs;
+    				std::string gout;
+    				std::string gin;
+    				
     				std::stringstream gold;
     				gold << iGold;
-    				g = gout.str();
+    				g = gold.str();
     				
     				printf("Start Gold Debug\n");
     				printf("Gold : ");
     				printf("%s", g); //Gold
     				printf("\n");
 
-    				std::string gs;
+    				
     				std::stringstream goldsupply;
     				goldsupply << iGoldSupply;
     				gs = goldsupply.str();
@@ -1446,7 +1450,7 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex)
                     printf("%s", gs); //GoldSupply
                     printf("\n");
                     
-    				std::string gout;
+    				
     				std::stringstream goldout;
     				goldout << nValueOut;
     				gout = goldout.str();
@@ -1455,7 +1459,7 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex)
                     printf("%Ld", gout); //GoldOut
                     printf("\n");
 
-    				std::string gin;
+    				
     				std::stringstream goldin;
     				goldin << nValueIn;
     				gin = goldin.str();
