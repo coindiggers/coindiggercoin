@@ -1489,6 +1489,12 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex)
         if (!txdb.UpdateTxIndex((*mi).first, (*mi).second))
             return error("ConnectBlock() : UpdateTxIndex failed");
     }
+    uint256 prevHash = 0;
+	if(pindex->pprev)
+	{
+		prevHash = pindex->pprev->GetBlockHash();
+		printf("==> Got prevHash = %s\n", prevHash.ToString().c_str());
+	}
 
     if (vtx[0].GetValueOut() > GetBlockValue(pindex->nHeight, nFees))
         return false;
