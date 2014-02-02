@@ -1435,7 +1435,7 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex)
     				
     				
     				printf("GoldSupplyIndex : ");
-    				printf("%s", gindex.str()); //Gold
+    				printf("%s", gindex.c_str()); //Gold
     				printf("\n");    				
     				
     				std::stringstream gold;
@@ -1444,12 +1444,12 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex)
     				
     				
     				printf("Gold : ");
-    				printf("%s", g.str()); //Gold
+    				printf("%s", g.c_str()); //Gold
     				printf("\n");
 
     				
     				std::stringstream goldsupply;
-    				goldsupply << nGoldSupply;
+    				goldsupply << iGoldSupply;
     				std::string gs = goldsupply.str();
     									
                     printf("GoldSupply : ");
