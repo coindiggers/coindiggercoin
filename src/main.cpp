@@ -1428,34 +1428,40 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex)
     if (fDebug)	
     {
     				std::string g;
-    				std::stringstream gout;
-    				gout << iGold;
-    				g = gour.str();
+    				std::stringstream gold;
+    				gold << iGold;
+    				g = gout.str();
     				
-    				//std::stringstream stream;
-    				//std::stream << iGold;
-    				//std::strGold strValue(stream.str());
     				printf("Start Gold Debug\n");
     				printf("Gold : ");
     				printf("%s", g); //Gold
     				printf("\n");
-    				//printf("%Ld", iGold); //Gold
-                    //printf("Int Gold: %i \n", iGold);
-                    //printf("Int GoldSupply: %i \n", iGoldSupply);
-                    std::stringstream stream2;
-    				std::stream2 << iGoldSupply;
-                    std::strGoldSupply strValue(stream2.str());
+
+    				std::string gs;
+    				std::stringstream goldsupply;
+    				goldsupply << iGoldSupply;
+    				gs = goldsupply.str();
+    									
                     printf("GoldSupply : ");
-                    printf("%s", strGoldSupply); //GoldSupply
+                    printf("%s", gs); //GoldSupply
                     printf("\n");
-                    //printf("Str Gold: %s \n", iGold);
-                    //printf("Str GoldSupply: %s \n", iGoldSupply);
+                    
+    				std::string gout;
+    				std::stringstream goldout;
+    				goldout << nValueOut;
+    				gout = goldout.str();
+                    
                     printf("GoldOut : ");
-                    printf("%Ld", GoldOut); //GoldOut
+                    printf("%Ld", gout); //GoldOut
                     printf("\n");
-                    //printf("Int GoldOut: %i \n", GoldOut);
+
+    				std::string gin;
+    				std::stringstream goldin;
+    				goldin << nValueIn;
+    				gin = goldin.str();
+
                     printf("GoldIn : ");
-                    printf("%Ld", GoldIn); //GoldIn
+                    printf("%Ld", gin); //GoldIn
                     printf("\n");
                     //printf("Int GoldIn: %i \n", GoldIn);
                     printf("End Gold Debug\n");
