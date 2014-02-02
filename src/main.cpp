@@ -15,6 +15,8 @@
 #include <boost/algorithm/string/replace.hpp>
 #include <boost/filesystem.hpp>
 #include <boost/filesystem/fstream.hpp>
+#include <boost/random/mersenne_twister.hpp>
+#include <boost/random/uniform_int_distribution.hpp>
 
 using namespace std;
 using namespace boost;
@@ -834,8 +836,8 @@ int64 static GetBlockValue(int nHeight, int64 nFees, uint256 prevHash)
 	std::string cseed_str = prevHash.ToString();
 	const char* cseed = cseed_str.c_str();
 	long seed = hex2long(cseed);
-	printf("Prev has to str : %s",cseed.c_str());
-	printf("Previous hex2longhash : %s",seed.c_str());
+	printf("Previous has to str : %s",cseed);
+	printf("Previous hex2longhash : %s",seed);
 	
 	
 	
@@ -3596,7 +3598,7 @@ CBlock* CreateNewBlock(CReserveKey& reservekey)
         printf("CreateNewBlock(): total size %lu\n", nBlockSize);
 
     }
-    pblock->vtx[0].vout[0].nValue = GetBlockValue(pindexPrev->nHeight+1, nFees);
+    pblock->vtx[0].vout[0].nValue = GetBlockValue(pindexPrev->nHeight+1, nFees, prevHash);
 
     // Fill in header
     pblock->hashPrevBlock  = pindexPrev->GetBlockHash();
