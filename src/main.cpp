@@ -1438,7 +1438,7 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex)
     				
     				printf("Start Gold Debug\n");
     				printf("Gold : ");
-    				sprintf("%s", g.c_str()); //Gold
+    				printf("%s", g.c_str()); //Gold
     				printf("\n");
 
     				
