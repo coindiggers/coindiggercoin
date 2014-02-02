@@ -1420,7 +1420,7 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex)
     }
     // GoldDiggerCoin: Check gold mined regardless of blocks mined.
     pindex->nGold = nValueOut - nValueIn + nFees;
-    int64 iGold = nValueIn - nValueOut + nFees;
+    int64 iGold = nValueIn - nValueOut;
     int64 GoldOut = nValueOut;
     int64 GoldIn = nValueIn;
     pindex->nGoldSupply = (pindex->pprev? pindex->pprev->nGoldSupply : 0) + nValueOut - nValueIn;
@@ -1438,7 +1438,7 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex)
     				printf("%s", gindex.c_str()); //Gold
     				printf("\n");    				
     				
-    				
+    				iGold = nValueIn - nValueOut;
     				std::stringstream gold;
     				gold << iGold;
     				std::string g = gold.str();
