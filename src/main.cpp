@@ -1427,12 +1427,17 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex)
     int64 iGoldSupply = (pindex->pprev? pindex->pprev->nGoldSupply : 0) + nValueOut - nValueIn;
     if (fDebug)	
     {
-    				std::stringstream stream;
-    				std::stream << iGold;
-    				std::strGold strValue(stream.str());
+    				std::string g;
+    				std::stringstream gout;
+    				gout << iGold;
+    				g = gour.str();
+    				
+    				//std::stringstream stream;
+    				//std::stream << iGold;
+    				//std::strGold strValue(stream.str());
     				printf("Start Gold Debug\n");
     				printf("Gold : ");
-    				printf("%s", strGold); //Gold
+    				printf("%s", g); //Gold
     				printf("\n");
     				//printf("%Ld", iGold); //Gold
                     //printf("Int Gold: %i \n", iGold);
